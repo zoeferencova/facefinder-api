@@ -12,11 +12,13 @@ const db = knex({
     client: 'pg',
     connection: {
         connectionString: process.env.DATABASE_URL,
-        ssl: {
-            rejectUnauthorized: false
-        }
+        ssl: true
     }
 });
+
+db.raw('select 1+1 as result').then(function () {
+    console.log('hi')
+  });
 
 const app = express();
 
