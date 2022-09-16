@@ -11,14 +11,10 @@ const image = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-        connectionString: process.env.DATABASE_URL + "?ssl=true?debug=true",
-        ssl: false
+        connectionString: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false }
     }
 });
-
-// db.raw('select 1+1 as result').then(function () {
-//     console.log('hi')
-//   });
 
 const app = express();
 
