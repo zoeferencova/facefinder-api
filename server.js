@@ -9,7 +9,7 @@ const user = require('./controllers/user');
 const image = require('./controllers/image');
 
 const db = knex({
-    client: 'postgresql',
+    client: 'pg',
     connection: {
         connectionString: process.env.DATABASE_URL,
         ssl: {
@@ -30,6 +30,6 @@ app.post('/register', register.handleRegister(db, bcrypt));
 app.get('/user/:id', user.handleGetUser(db));
 app.post('/image', image.handleImageDetection);
 
-app.listen(3000, () => {
-    console.log(`app is running on port 3000`)
+app.listen(process.env.PORT, () => {
+    console.log(`app is running on port ${process.env.PORT}`)
 });
