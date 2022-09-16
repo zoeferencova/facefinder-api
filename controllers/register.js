@@ -25,6 +25,7 @@ const handleRegister = (db, bcrypt) => (req, res) => {
         })
         .catch(err => {
             console.log(err)
+            res.json('erroooorrr')
         });
     }
     
